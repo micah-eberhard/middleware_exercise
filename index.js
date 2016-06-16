@@ -7,8 +7,6 @@ app.set('view engine', 'ejs');
 var pg = require('pg');
 
 
-app.use(express.static(__dirname + "/public"));
-
 
 //Write your own middleware function with app.use - to console log the request url path for every route.
 
