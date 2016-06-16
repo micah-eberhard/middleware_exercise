@@ -11,20 +11,9 @@ app.use(express.static(__dirname + "/public"));
 
 
 //Write your own middleware function with app.use - to console log the request url path for every route.
-app.use(function(req, res, next){
-  console.log("Request: " + req.url);
-  next();
-});
 
-//Write your own middleware that restricts access to /users/auth so that when you attempt to
+//Write your own middleware that restricts access to /users so that when you attempt to
 //access that route, you get sent to the home page ('/') - look up how to use res.redirect();
-app.use('/users/auth', function(req, res, next){
-  setTimeout(function(){
-    res.redirect('/home');
-  }, 2000);
-  //next();
-});
-
 
 
 app.get('/home', function(req, res, next){
@@ -32,16 +21,17 @@ app.get('/home', function(req, res, next){
   res.end();
 });
 
-app.get('/users/auth', function(req, res, next){
+app.get('/users', function(req, res, next){
   res.render('users', {});
 });
 
-app.get('/api/:things', function(req, res, next){
-  if(req.params.things === 'err')
+app.get('/err/:msg', function(req, res, next){
+  if(req.params.msg === 'error')
   {
-    next("This is an error", req, res, next);
+    next({err: req.params.msg}, req, res, next);
   }
   else {
+    res.write("Must not be an error...");
     res.end();
   }
 });
@@ -49,12 +39,6 @@ app.get('/api/:things', function(req, res, next){
 
 //Write your own middleware ERROR function using app.use to display an error message when it gets used through next()
 //Reference the docs: http://expressjs.com/en/guide/using-middleware.html
-app.use(function(err, req, res, next){
-  console.log("Error: ");
-  console.log(err);
-  res.write(JSON.stringify(err));
-  res.end();
-});
 
 
 
