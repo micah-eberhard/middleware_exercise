@@ -8,7 +8,12 @@
 > Check out the /err/:msg route for an easy way to test this function.
 > Reference the docs: http://expressjs.com/en/guide/using-middleware.html
 
-- ```npm install --save morgan```
+
+- Install Morgan: https://www.npmjs.com/package/morgan
+- In your terminal:
+> ```npm install --save morgan```
+
+- In your index.js:
 ```javascript
 var logger = require('morgan');
 app.use(logger('dev'));
