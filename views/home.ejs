@@ -1,12 +1,33 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
     <title>Home</title>
     <link rel="stylesheet" href="/style.css" media="screen" title="no title" charset="utf-8">
-  </head>
-  <body>
+</head>
+
+<body>
     <h1> This is the HOME Page! </h1>
-    <a href="/users">Click here to go to the authenticated users page</a>
-  </body>
+    <h2> Enter your info</h2>
+    <form method="POST" action="/info">
+        <label> Name- First and Last
+            <input id="name">
+        </label>
+        <label> address </label>
+        <label> City
+            <input>
+        </label>
+        <label> State
+            <input>
+        </label>
+        <label> zip
+            <input>
+        </label>
+        <input type="submit">
+      </form>
+
+        <a href="/users">Click here to go to the authenticated users page</a>
+</body>
+
 </html>
